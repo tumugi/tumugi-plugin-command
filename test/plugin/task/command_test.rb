@@ -3,21 +3,23 @@ require 'fileutils'
 require 'tumugi/plugin/task/command'
 
 class Tumugi::Plugin::CommandTaskTest < Test::Unit::TestCase
-  startup do
-    FileUtils.mkdir_p('./tmp')
+  class << self
+    def startup
+      FileUtils.mkdir_p('./test/tmp')
+    end
   end
 
   setup do
     @klass = Class.new(Tumugi::Plugin::CommandTask)
     @klass.param_set(:command, 'echo test')
-    @klass.param_set(:output_file, './tmp/result_test.txt')
+    @klass.param_set(:output_file, './test/tmp/result_test.txt')
   end
 
   sub_test_case "parameters" do
     test "should set correctly" do
       task = @klass.new
       assert_equal('echo test', task.command)
-      assert_equal('./tmp/result_test.txt', task.output_file)
+      assert_equal('./test/tmp/result_test.txt', task.output_file)
     end
 
     data({
@@ -38,7 +40,7 @@ class Tumugi::Plugin::CommandTaskTest < Test::Unit::TestCase
       task = @klass.new
       output = task.output
       assert_true(output.is_a? Tumugi::Plugin::LocalFileTarget)
-      assert_equal('./tmp/result_test.txt', output.path)
+      assert_equal('./test/tmp/result_test.txt', output.path)
     end
 
     test "when output_file is not set" do
