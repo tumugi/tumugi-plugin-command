@@ -3,6 +3,7 @@ require_relative './test_helper'
 class Tumugi::Plugin::Command::CLITest < Test::Unit::TestCase
   examples = {
     'run_command' => ['run_command.rb', 'task1'],
+    'run_external_script' => ['run_external_script.rb', 'task1'],
     'save_result_to_file' => ['save_result_to_file.rb', 'task1'],
   }
 
