@@ -29,7 +29,7 @@ class Tumugi::Plugin::CommandTaskTest < Test::Unit::TestCase
       params.each do |param|
         @klass.param_set(param, nil)
       end
-      assert_raise(Tumugi::Parameter::ParameterError) do
+      assert_raise(Tumugi::ParameterError) do
         @klass.new
       end
     end
