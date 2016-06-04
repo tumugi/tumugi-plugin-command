@@ -10,9 +10,11 @@ class Tumugi::Plugin::CommandTaskTest < Test::Unit::TestCase
   end
 
   setup do
+    @env = { "KEY1" => "value1" }
     @klass = Class.new(Tumugi::Plugin::CommandTask)
     @klass.param_set(:command, 'echo test')
     @klass.param_set(:output_file, './test/tmp/result_test.txt')
+    @klass.param_set(:env, @env)
   end
 
   sub_test_case "parameters" do
@@ -20,6 +22,7 @@ class Tumugi::Plugin::CommandTaskTest < Test::Unit::TestCase
       task = @klass.new
       assert_equal('echo test', task.command)
       assert_equal('./test/tmp/result_test.txt', task.output_file)
+      assert_equal({ "KEY1" => "value1" }, task.env)
     end
 
     data({
@@ -63,6 +66,14 @@ class Tumugi::Plugin::CommandTaskTest < Test::Unit::TestCase
       @klass.param_set(:output_file, nil)
       task = @klass.new
       task.run
+    end
+
+    test "command can read task.env" do
+      @klass.param_set(:command, 'test/data/echo.sh')
+      task = @klass.new
+      output = task.output
+      task.run
+      assert_equal("#{@env['KEY1']}\n", File.read(output.path))
     end
 
     test "raise error when command return code is non zero value" do
