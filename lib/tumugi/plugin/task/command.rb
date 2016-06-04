@@ -12,6 +12,7 @@ module Tumugi
 
       param :command, type: :string, required: true
       param :output_file, type: :string
+      param :env, type: :hash, default: {}
 
       def output
         unless output_file.nil?
@@ -24,7 +25,7 @@ module Tumugi
       def run
         log "Execute command: #{command}"
         begin
-          out, err, status = Open3.capture3(*Shellwords.split(command))
+          out, err, status = Open3.capture3(env, *Shellwords.split(command))
         rescue => e
           raise Tumugi::TumugiError, e.message
         end
