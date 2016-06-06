@@ -16,7 +16,7 @@ module Tumugi
 
       def output
         unless output_file.nil?
-          Tumugi::Plugin::LocalFileTarget.new(output_file)
+          @output ||= Tumugi::Plugin::LocalFileTarget.new(output_file)
         else
           nil
         end
@@ -35,8 +35,8 @@ module Tumugi
 
         if status.exitstatus == 0
           if output_file && _output
-            log "Save STDOUT into #{_output.path}"
-            _output.open('w') do |f|
+            log "Save STDOUT into #{output.path}"
+            output.open('w') do |f|
               f.print(out)
             end
           end
