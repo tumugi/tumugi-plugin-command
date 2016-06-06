@@ -1,7 +1,14 @@
 # Change Log
 
-## [0.2.0](https://github.com/tumugi/tumugi-plugin-command/tree/0.2.0) (2016-06-04)
-[Full Changelog](https://github.com/tumugi/tumugi-plugin-command/compare/v0.1.0...0.2.0)
+## [0.2.1](https://github.com/tumugi/tumugi-plugin-command/tree/0.2.1) (2016-06-06)
+[Full Changelog](https://github.com/tumugi/tumugi-plugin-command/compare/v0.2.0...0.2.1)
+
+**Merged pull requests:**
+
+- Cache output [\#8](https://github.com/tumugi/tumugi-plugin-command/pull/8) ([hakobera](https://github.com/hakobera))
+
+## [v0.2.0](https://github.com/tumugi/tumugi-plugin-command/tree/v0.2.0) (2016-06-04)
+[Full Changelog](https://github.com/tumugi/tumugi-plugin-command/compare/v0.1.0...v0.2.0)
 
 **Closed issues:**
 
@@ -9,10 +16,11 @@
 
 **Merged pull requests:**
 
-- Change tumugi version dependency for future release [\#6](https://github.com/tumugi/tumugi-plugin-command/pull/6) ([hakobera](https://github.com/hakobera))
-- Support env param [\#5](https://github.com/tumugi/tumugi-plugin-command/pull/5) ([hakobera](https://github.com/hakobera))
+- Update changelog [\#7](https://github.com/tumugi/tumugi-plugin-command/pull/7) ([hakobera](https://github.com/hakobera))
 - Use Thor's invoke instead of system [\#3](https://github.com/tumugi/tumugi-plugin-command/pull/3) ([hakobera](https://github.com/hakobera))
 - Prepare release for v0.2.0 [\#2](https://github.com/tumugi/tumugi-plugin-command/pull/2) ([hakobera](https://github.com/hakobera))
+- Change tumugi version dependency for future release [\#6](https://github.com/tumugi/tumugi-plugin-command/pull/6) ([hakobera](https://github.com/hakobera))
+- Support env param [\#5](https://github.com/tumugi/tumugi-plugin-command/pull/5) ([hakobera](https://github.com/hakobera))
 - Update tumugi to v0.5.0 [\#1](https://github.com/tumugi/tumugi-plugin-command/pull/1) ([hakobera](https://github.com/hakobera))
 
 ## [v0.1.0](https://github.com/tumugi/tumugi-plugin-command/tree/v0.1.0) (2016-05-17)
