@@ -1,20 +1,22 @@
 require_relative './test_helper'
-require 'tumugi/cli'
 
-class Tumugi::Plugin::Command::CLITest < Test::Unit::TestCase
+class Tumugi::Plugin::Command::CLITest < Tumugi::Test::TumugiTestCase
   examples = {
     'run_command' => ['run_command.rb', 'task1'],
     'run_external_script' => ['run_external_script.rb', 'task1'],
     'save_result_to_file' => ['save_result_to_file.rb', 'task1'],
   }
 
-  def invoke(command, file, task, options)
-    return true if ENV.key? 'TRAVIS'
-    Tumugi::CLI.new.invoke(command, [task], options.merge(file: "./examples/#{file}", quiet: true))
+  data do
+    data_set = {}
+    examples.each do |k, v|
+      [1, 2, 8].each do |n|
+        data_set["#{k}_workers_#{n}"] = (v.dup << n)
+      end
+    end
+    data_set
   end
-
-  data(examples)
-  test 'success' do |(file, task)|
-    assert_true(invoke(:run_, file, task, worker: 4))
+  test 'success' do |(file, task, worker)|
+    assert_run_success("examples/#{file}", task, worker: worker)
   end
 end

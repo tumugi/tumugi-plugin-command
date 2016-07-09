@@ -12,9 +12,9 @@ class Tumugi::Plugin::CommandTaskTest < Test::Unit::TestCase
   setup do
     @env = { "KEY1" => "value1" }
     @klass = Class.new(Tumugi::Plugin::CommandTask)
-    @klass.param_set(:command, 'echo test')
-    @klass.param_set(:output_file, './test/tmp/result_test.txt')
-    @klass.param_set(:env, @env)
+    @klass.set(:command, 'echo test')
+    @klass.set(:output_file, './test/tmp/result_test.txt')
+    @klass.set(:env, @env)
   end
 
   sub_test_case "parameters" do
@@ -30,7 +30,7 @@ class Tumugi::Plugin::CommandTaskTest < Test::Unit::TestCase
     })
     test "raise error when required parameter is not set" do |params|
       params.each do |param|
-        @klass.param_set(param, nil)
+        @klass.set(param, nil)
       end
       assert_raise(Tumugi::ParameterError) do
         @klass.new
@@ -47,7 +47,7 @@ class Tumugi::Plugin::CommandTaskTest < Test::Unit::TestCase
     end
 
     test "when output_file is not set" do
-      @klass.param_set(:output_file, nil)
+      @klass.set(:output_file, nil)
       task = @klass.new
       assert_nil(task.output)
     end
@@ -63,13 +63,13 @@ class Tumugi::Plugin::CommandTaskTest < Test::Unit::TestCase
     end
 
     test "when output_file is not set" do
-      @klass.param_set(:output_file, nil)
+      @klass.set(:output_file, nil)
       task = @klass.new
       task.run
     end
 
     test "command can read task.env" do
-      @klass.param_set(:command, 'test/data/echo.sh')
+      @klass.set(:command, 'test/data/echo.sh')
       task = @klass.new
       output = task.output
       task.run
@@ -77,7 +77,7 @@ class Tumugi::Plugin::CommandTaskTest < Test::Unit::TestCase
     end
 
     test "raise error when command return code is non zero value" do
-      @klass.param_set(:command, './test/data/error.sh')
+      @klass.set(:command, './test/data/error.sh')
       task = @klass.new
       assert_raise(Tumugi::TumugiError) do
         task.run
@@ -85,7 +85,7 @@ class Tumugi::Plugin::CommandTaskTest < Test::Unit::TestCase
     end
 
     test "raise error when command run failed" do
-      @klass.param_set(:command, 'invalid_command')
+      @klass.set(:command, 'invalid_command')
       task = @klass.new
       assert_raise(Tumugi::TumugiError) do
         task.run
