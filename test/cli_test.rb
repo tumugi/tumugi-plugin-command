@@ -7,6 +7,10 @@ class Tumugi::Plugin::Command::CLITest < Tumugi::Test::TumugiTestCase
     'save_result_to_file' => ['save_result_to_file.rb', 'task1'],
   }
 
+  setup do
+    system('rm -rf tmp/*')
+  end
+
   data do
     data_set = {}
     examples.each do |k, v|
