@@ -17,6 +17,6 @@ class Tumugi::Plugin::Command::CLITest < Tumugi::Test::TumugiTestCase
     data_set
   end
   test 'success' do |(file, task, worker)|
-    assert_run_success("examples/#{file}", task, worker: worker, verbose: true, quiet: false)
+    assert_run_success("examples/#{file}", task, workers: worker, verbose: true, quiet: false)
   end
 end
