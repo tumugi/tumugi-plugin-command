@@ -7,3 +7,7 @@ require 'test/unit'
 require 'test/unit/rr'
 
 require 'tumugi'
+require 'tumugi/test/helper'
+include Tumugi::Test::Helpers
+
+Dir.mkdir('tmp') unless Dir.exist?('tmp')

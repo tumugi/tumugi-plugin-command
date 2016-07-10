@@ -1,8 +1,8 @@
 [![Build Status](https://travis-ci.org/tumugi/tumugi-plugin-command.svg?branch=master)](https://travis-ci.org/tumugi/tumugi-plugin-command) [![Code Climate](https://codeclimate.com/github/tumugi/tumugi-plugin-command/badges/gpa.svg)](https://codeclimate.com/github/tumugi/tumugi-plugin-command) [![Coverage Status](https://coveralls.io/repos/github/tumugi/tumugi-plugin-command/badge.svg?branch=master)](https://coveralls.io/github/tumugi/tumugi-plugin-command)  [![Gem Version](https://badge.fury.io/rb/tumugi-plugin-command.svg)](https://badge.fury.io/rb/tumugi-plugin-command)
 
-# tumugi-plugin-command
+# Command plugin for [tumugi](https://github.com/tumugi/tumugi)
 
-tumugi-plugin-command is a plugin to execute a command.
+tumugi-plugin-command is a tumugi plugin to execute a command.
 
 ## Installation
 
@@ -12,17 +12,7 @@ Add this line to your application's Gemfile:
 gem 'tumugi-plugin-command'
 ```
 
-And then execute:
-
-```sh
-$ bundle
-```
-
-Or install it yourself as:
-
-```sh
-$ gem install tumugi-plugin-command
-```
+And then execute `bundle install`.
 
 ## Task
 
@@ -36,7 +26,7 @@ $ gem install tumugi-plugin-command
 
 ```rb
 task :task1, type: :command do
-  param_set :command, "ls -la"
+  command "ls -la"
 end
 ```
 
@@ -44,8 +34,8 @@ end
 
 ```rb
 task :task1, type: :command do
-  param_set :command, "echo 'success'"
-  param_set :output_file, "result.txt"
+  command "echo 'success'"
+  output_file "result.txt"
 end
 ```
 
@@ -59,11 +49,11 @@ echo 'success' > tmp/external_script_result.txt
 ```rb
 task :task1, type: :command do
   requires :task2
-  param_set :command, -> { "cat #{input.path}" }
+  command { "cat #{input.path}" }
 end
 
 task :task2, type: :command do
-  param_set :command, "./examples/external_script.sh"
+  command "./examples/external_script.sh"
   output target(:local_file, "tmp/external_script_result.txt")
 end
 ```
