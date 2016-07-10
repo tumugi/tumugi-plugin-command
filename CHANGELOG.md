@@ -1,10 +1,18 @@
 # Change Log
 
-## [0.2.1](https://github.com/tumugi/tumugi-plugin-command/tree/0.2.1) (2016-06-06)
-[Full Changelog](https://github.com/tumugi/tumugi-plugin-command/compare/v0.2.0...0.2.1)
+## [0.3.0](https://github.com/tumugi/tumugi-plugin-command/tree/0.3.0) (2016-07-11)
+[Full Changelog](https://github.com/tumugi/tumugi-plugin-command/compare/v0.2.1...0.3.0)
+
+**Implemented enhancements:**
+
+- Update dependent tumugi version to \>= 0.6.0 and update examples [\#10](https://github.com/tumugi/tumugi-plugin-command/pull/10) ([hakobera](https://github.com/hakobera))
+
+## [v0.2.1](https://github.com/tumugi/tumugi-plugin-command/tree/v0.2.1) (2016-06-06)
+[Full Changelog](https://github.com/tumugi/tumugi-plugin-command/compare/v0.2.0...v0.2.1)
 
 **Merged pull requests:**
 
+- Prepare release for 0.2.1 [\#9](https://github.com/tumugi/tumugi-plugin-command/pull/9) ([hakobera](https://github.com/hakobera))
 - Cache output [\#8](https://github.com/tumugi/tumugi-plugin-command/pull/8) ([hakobera](https://github.com/hakobera))
 
 ## [v0.2.0](https://github.com/tumugi/tumugi-plugin-command/tree/v0.2.0) (2016-06-04)
