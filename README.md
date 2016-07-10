@@ -18,9 +18,14 @@ And then execute `bundle install`.
 
 ### Tumugi::Plugin::CommandTask
 
-`Tumugi::Plugin::BigqueryShellTask` is task to execute a specified command.
+`Tumugi::Plugin::CommandTask` is task to execute a specified command.
 
-#### Usage
+#### Parameters
+
+- **command** command which you want to execute (string, required)
+- **output_file** output file path. If you specified this parameter, all outputs to STDOUT are saved in this file. (string)
+
+#### Examples
 
 - Run command
 
@@ -30,7 +35,7 @@ task :task1, type: :command do
 end
 ```
 
-- Run command and save STDOUT into file
+- Run command and save all outputs to STDOUT into file
 
 ```rb
 task :task1, type: :command do
@@ -60,7 +65,7 @@ end
 
 ## Development
 
-After checking out the repo, run `bin/setup` to install dependencies. Then, run `rake test` to run the tests. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
+After checking out the repo, run `bundle install` to install dependencies. Then, run `bundle exec rake test` to run the tests.
 
 ## Contributing
 
