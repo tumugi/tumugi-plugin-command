@@ -13,7 +13,7 @@ module Tumugi
       param :command, type: :string, required: true
       param :output_file, type: :string
       param :env, type: :hash, default: {}
-      param :quiet, type: :hash, default: false
+      param :quiet, type: :bool, default: false
 
       def output
         unless output_file.nil?
