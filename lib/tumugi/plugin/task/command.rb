@@ -13,6 +13,7 @@ module Tumugi
       param :command, type: :string, required: true
       param :output_file, type: :string
       param :env, type: :hash, default: {}
+      param :quiet, type: :bool, default: false
 
       def output
         unless output_file.nil?
@@ -30,7 +31,7 @@ module Tumugi
           raise Tumugi::TumugiError, e.message
         end
 
-        logger.info  "stdout:\n" + out unless out.empty?
+        logger.info  "stdout:\n" + out unless out.empty? or quiet
         logger.error "stderr:\n" + err unless err.empty?
 
         if status.exitstatus == 0
