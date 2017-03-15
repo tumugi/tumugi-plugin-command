@@ -7,10 +7,7 @@ require 'tumugi/task'
 
 module Tumugi
   module Plugin
-    class CommandTask < Tumugi::Task
-      Tumugi::Plugin.register_task('command', self)
-
-      param :command, type: :string, required: true
+    class CommandBase < Tumugi::Task
       param :output_file, type: :string
       param :env, type: :hash, default: {}
       param :quiet, type: :bool, default: false
@@ -23,10 +20,10 @@ module Tumugi
         end
       end
 
-      def run
-        log "Execute command: #{command}"
+      def run_command(cmd)
+        log "Execute command: #{cmd}"
         begin
-          out, err, status = Open3.capture3(env, *Shellwords.split(command))
+          out, err, status = Open3.capture3(env, *Shellwords.split(cmd))
         rescue => e
           raise Tumugi::TumugiError, e.message
         end
@@ -44,6 +41,16 @@ module Tumugi
         else
           raise Tumugi::TumugiError, "Command failed: exit status is #{status.exitstatus}"
         end
+      end
+    end
+
+    class CommandTask < CommandBase
+      Tumugi::Plugin.register_task('command', self)
+
+      param :command, type: :string, required: true
+
+      def run
+        run_command(command)
       end
     end
   end
