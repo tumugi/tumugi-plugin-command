@@ -31,8 +31,8 @@ module Tumugi
           raise Tumugi::TumugiError, e.message
         end
 
-        logger.info out unless out.empty? or quiet
-        logger.error err unless err.empty?
+        logger.info  "stdout:\n" + out unless out.empty? or quiet
+        logger.error "stderr:\n" + err unless err.empty?
 
         if status.exitstatus == 0
           if output_file && _output
