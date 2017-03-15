@@ -40,6 +40,8 @@ end
 ```rb
 task :task1, type: :command do
   command "echo 'success'"
+  ## If you don't want to output stdout as log, set "quiet" param
+  # quiet true
   output_file "result.txt"
 end
 ```
